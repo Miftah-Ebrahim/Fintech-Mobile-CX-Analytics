@@ -166,6 +166,6 @@ jupyter notebook notebooks/
 
 <div align="center">
 
-### *Built with ❤️ by Mifta Y*
+### *Built wby Miftah(theyKey)*
 
 </div>
