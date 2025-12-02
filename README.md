@@ -17,7 +17,7 @@
 
 ---
 
-## 🚀 **Project Overview**
+##  **Project Overview**
 
 **Fintech Mobile CX Analytics** is an end-to-end automated pipeline designed to analyze customer sentiment for Ethiopia's top banking applications: **Commercial Bank of Ethiopia (CBE)**, **Bank of Abyssinia (BOA)**, and **Dashen Bank**.
 
@@ -79,7 +79,7 @@ project/
 │   ├── sentiment_analysis.py
 │   ├── keyword_thematic.py
 │   ├── db_upload.py
-│   └── main_pipeline.py     # 🚀 ORCHESTRATOR
+│   └── main_pipeline.py     #  ORCHESTRATOR
 │
 ├── 📂 reports/              # Final Deliverables
 │   ├── 📂 dashboard/        # Generated Plots
