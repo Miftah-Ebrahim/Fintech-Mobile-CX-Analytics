@@ -1,0 +1,18 @@
+FINTECH MOBILE CX ANALYTICS - AUTOMATED INSIGHTS
+================================================
+
+BANK: CBE
+  - Average Sentiment: 0.19
+  - 5-Star Reviews: 80
+  - 1-Star Reviews: 180
+
+BANK: BOA
+  - Average Sentiment: -0.01
+  - 5-Star Reviews: 98
+  - 1-Star Reviews: 312
+
+BANK: Dashen
+  - Average Sentiment: 0.41
+  - 5-Star Reviews: 345
+  - 1-Star Reviews: 85
+
