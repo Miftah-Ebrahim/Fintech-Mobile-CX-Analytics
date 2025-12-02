@@ -1,172 +1,171 @@
-# 🖥️ Customer Experience Analytics for Fintech Apps
+<div align="center">
 
-### 10 Academy – Week 2 Challenge
+# 📱 Fintech Mobile CX Analytics
+### *Unlocking Customer Insights through Data*
 
-#### *Initial Project Setup — Terminal Style README*
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=2E86C1&background=FFFFFF00&center=true&vCenter=true&width=500&lines=Sentiment+Analysis+Pipeline;Google+Play+Store+Scraping;Natural+Language+Processing;Actionable+Business+Insights)](https://git.io/typing-svg)
 
-```
-┌──────────────────────────────────────────────────────────────┐
-│     Customer Review Analytics • Fintech • NLP • PostgreSQL    │
-└──────────────────────────────────────────────────────────────┘
-```
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-336791?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?style=for-the-badge&logo=jupyter&logoColor=white)](https://jupyter.org/)
+[![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-150458?style=for-the-badge&logo=pandas&logoColor=white)](https://pandas.pydata.org/)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
-## ⚡ Project Boot Sequence
+[View Demo](#-visualizations) • [Report Bug](issues) • [Request Feature](issues)
 
-```
-$ initializing project...
-$ environment: python3 activated
-$ loading challenge specification...
-$ status: READY
-```
-
-This repository marks the **starting point** of a data-driven investigation into customer satisfaction for three major Ethiopian banking apps:
-
-* Commercial Bank of Ethiopia (CBE)
-* Bank of Abyssinia (BOA)
-* Dashen Bank
-
-Your mission over the week:
-
-> Scrape → Clean → Analyze → Store → Visualize → Recommend
-
-This README represents the **initial commit** and will evolve as the project advances.
+</div>
 
 ---
 
-## 🚀 Project Roadmap (Planned Execution)
+## 🚀 **Project Overview**
 
-```
-[Task 1] === Web Scraping & Preprocessing
-    ↳ google-play-scraper
-    ↳ 1200+ reviews target
+**Fintech Mobile CX Analytics** is an end-to-end automated pipeline designed to analyze customer sentiment for Ethiopia's top banking applications: **Commercial Bank of Ethiopia (CBE)**, **Bank of Abyssinia (BOA)**, and **Dashen Bank**.
 
-[Task 2] === Sentiment & NLP Themes
-    ↳ DistilBERT (HuggingFace)
-    ↳ VADER / TextBlob
-    ↳ spaCy + TF-IDF
-
-[Task 3] === PostgreSQL Integration
-    ↳ Create DB
-    ↳ Insert cleaned reviews
-    ↳ Verify integrity
-
-[Task 4] === Insights & Visualizations
-    ↳ Rating distributions
-    ↳ Sentiment bars
-    ↳ Keyword extractions
-    ↳ Business recommendations
-```
-
-Each block will be updated, documented, and committed as development continues.
+By leveraging **Natural Language Processing (NLP)** and **Machine Learning**, this project transforms raw Google Play Store reviews into actionable business strategies, helping banks reduce churn and improve user satisfaction.
 
 ---
 
-## 📁 Current Repository Structure
+## 💎 **Key Features**
 
-```
-fintech-review-analytics/
-├── data/
-│   ├── raw/        # scraped data will land here
-│   └── clean/      # cleaned & structured outputs
-├── scripts/
-│   ├── scrape_reviews.py         # (to be created)
-│   ├── preprocess.py             # (to be created)
-│   ├── sentiment_analysis.py     # (to be created)
-│   ├── theme_extraction.py       # (to be created)
-│   ├── db_insert.py              # (to be created)
-│   └── insights.py               # (to be created)
-├── requirements.txt
-├── README.md
-└── .gitignore
-```
-
-> 📝 *Additional directories (e.g., `/reports`, `/notebooks`) will be added as the project matures.*
+| Feature | Description |
+| :--- | :--- |
+| 🕷️ **Automated Scraping** | Fetches thousands of real-time reviews using `google-play-scraper`. |
+| 🧹 **Smart Preprocessing** | Advanced cleaning pipeline (Deduplication, Normalization, Lemmatization). |
+| 🧠 **Sentiment Engine** | Powered by **VADER** to classify feedback as Positive, Neutral, or Negative. |
+| 🔍 **Topic Modeling** | Extracts hidden themes and N-grams to identify specific pain points. |
+| 🗄️ **Data Warehousing** | Robust storage using **PostgreSQL** for scalable analytics. |
+| 📊 **Interactive Dashboard** | Beautiful visualizations generated via Matplotlib & Seaborn. |
 
 ---
 
-## ⚙️ Installation & Setup
+## 🏗️ **Architecture**
 
-### 🔧 Clone Repository
+```mermaid
+graph LR
+    A[Google Play Store] -->|Scraper| B(Raw Data)
+    B -->|Preprocessing| C{Clean Data}
+    C -->|VADER Engine| D[Sentiment Scores]
+    C -->|NLP| E[Keywords & Themes]
+    D --> F[(PostgreSQL DB)]
+    E --> F
+    F --> G[Visualizations & Reports]
+```
+
+---
+
+## 📂 **Project Structure**
 
 ```bash
-git clone <https://github.com/Miftah-Ebrahim/Fintech-Mobile-CX-Analytics>
-cd Fintech-Mobile-CX-Analytics
+project/
+├── 📂 data/                 # Data storage
+│   ├── 📂 raw/              # Raw scraped reviews
+│   ├── 📂 clean/            # Preprocessed datasets
+│   └── 📂 processed/        # Sentiment analysis results
+│
+├── 📂 database/             # Database scripts
+│   ├── schema.sql           # Table definitions
+│   └── queries.sql          # Analytical queries
+│
+├── 📂 notebooks/            # Interactive Analysis
+│   ├── 01_scraping.ipynb
+│   ├── 02_preprocessing.ipynb
+│   ├── 03_sentiment_analysis.ipynb
+│   ├── 04_topic_modeling.ipynb
+│   └── 05_visualizations.ipynb
+│
+├── 📂 scripts/              # Production Pipeline
+│   ├── scraper.py
+│   ├── preprocess.py
+│   ├── sentiment_analysis.py
+│   ├── keyword_thematic.py
+│   ├── db_upload.py
+│   └── main_pipeline.py     # 🚀 ORCHESTRATOR
+│
+├── 📂 reports/              # Final Deliverables
+│   ├── 📂 dashboard/        # Generated Plots
+│   └── final_report.md      # Executive Summary
+│
+└── README.md                # You are here!
 ```
 
-### 🔧 Install Dependencies
+---
 
+## ⚡ **Getting Started**
+
+### **Prerequisites**
+*   Python 3.8+
+*   PostgreSQL
+
+### **Installation**
+
+1.  **Clone the repository**
+    ```bash
+    git clone https://github.com/Miftah-Ebrahim/Fintech-Mobile-CX-Analytics.git
+    cd Fintech-Mobile-CX-Analytics
+    ```
+
+2.  **Create Virtual Environment**
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows: venv\Scripts\activate
+    ```
+
+3.  **Install Dependencies**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4.  **Configure Database**
+    *   Create a database named `bank_reviews` in PostgreSQL.
+    *   Update `.env` file with your credentials:
+        ```ini
+        DB_HOST=localhost
+        DB_NAME=bank_reviews
+        DB_USER=postgres
+        DB_PASS=your_password
+        ```
+
+---
+
+## 🏃 **Usage**
+
+### **Option 1: Run Full Pipeline**
+Execute the master script to run all stages (Preprocessing → Analysis → Database Upload):
 ```bash
-pip install -r requirements.txt
+python scripts/main_pipeline.py
 ```
 
-### 🔧 Run First Script (Coming Soon)
-
+### **Option 2: Interactive Notebooks**
+Explore the data step-by-step using Jupyter:
 ```bash
-python scripts/scrape_reviews.py
+jupyter notebook notebooks/
 ```
 
 ---
 
-## 🧰 Technology Stack (Planned)
+## 📊 **Visualizations**
 
-```
-[ Data Collection ]
-    └─ google-play-scraper
+<div align="center">
+  <img src="reports/dashboard/rating_distribution.png" alt="Rating Distribution" width="45%">
+  <img src="reports/dashboard/sentiment_trend.png" alt="Sentiment Trend" width="45%">
+</div>
 
-[ Data Processing ]
-    └─ pandas, numpy
-
-[ NLP / ML ]
-    ├─ HuggingFace transformers (DistilBERT)
-    ├─ spaCy
-    ├─ scikit-learn
-    ├─ VADER, TextBlob
-
-[ Database Layer ]
-    └─ PostgreSQL + psycopg2
-
-[ Visualization ]
-    └─ matplotlib, seaborn
-```
+> *Sample insights generated from the analysis pipeline.*
 
 ---
 
-## 📅 Challenge Timeline (Week 2)
+## 🏆 **Results & Insights**
 
-```
-26 Nov  — Challenge Kickoff
-30 Nov  — Interim Report (Scraping + Early Analysis)
-02 Dec  — Final Submission (All tasks + Report)
-```
+*   **CBE:** High friction in login processes (`"Connection Error"`).
+*   **BOA:** Recent updates caused stability issues (`"App Crash"`).
+*   **Dashen:** Strong feature set but integration issues with Amole (`"Wallet Sync"`).
 
----
-
-## 👨‍💻 Contributors
-
-```
-Facilitators: Kerod • Mahbubah • Filimon
-Developer:   Miftah E
-```
+👉 **[Read the Full Report](reports/final_report.md)**
 
 ---
 
-## 📄 Notes
+<div align="center">
 
-This README is a **first-stage blueprint**.
-As the project progresses, additional sections will be appended:
+### *Built with ❤️ by Mifta Y*
 
-```
-+ Data Dictionary
-+ SQL Schema
-+ Pipeline Diagrams
-+ Final Visualizations
-+ Insights & Recommendations
-+ PDF Reports
-```
-
-Stay tuned for updates as the project evolves from **prototype → production-ready analysis**.
-
-```
-$ exiting README...
-$ progress saved successfully.
-```
+</div>

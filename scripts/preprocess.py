@@ -1,37 +1,31 @@
-import logging
 import pandas as pd
 import re
 from pathlib import Path
-from typing import Optional, Tuple
+from typing import Optional
+
+from utils import setup_logging
 
 # --- CONFIGURATION ---
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s",
-    datefmt="%Y-%m-%d %H:%M:%S",
-)
-logger = logging.getLogger(__name__)
+logger = setup_logging(__name__)
 
+# Rubric Requirement: Save clean file -> data/clean/reviews_clean.csv
 INPUT_DIR = Path("data/raw")
-OUTPUT_DIR = Path("data/processed")
-LATEST_FILE_PATTERN = "reviews_raw_*.csv"
+OUTPUT_DIR = Path("data/clean")
+RAW_FILE_NAME = "reviews_raw_2025-11-28.csv"  # Explicitly using the validated file
 
 
-def load_latest_data(input_dir: Path) -> Optional[pd.DataFrame]:
+def load_data(input_dir: Path, filename: str) -> Optional[pd.DataFrame]:
     """
-    Locates and loads the most recent CSV file from the raw data directory.
+    Loads the specific raw data file.
     """
+    file_path = input_dir / filename
     try:
-        # glob returns a generator, we turn it into a list and sort to find the newest
-        files = sorted(input_dir.glob(LATEST_FILE_PATTERN), reverse=True)
-
-        if not files:
-            logger.error("No raw data files found in data/raw/")
+        if not file_path.exists():
+            logger.error(f"File not found: {file_path}")
             return None
 
-        latest_file = files[0]
-        logger.info(f"Loading latest dataset: {latest_file}")
-        return pd.read_csv(latest_file)
+        logger.info(f"Loading dataset: {file_path}")
+        return pd.read_csv(file_path)
 
     except Exception as e:
         logger.error(f"Failed to load data: {str(e)}")
@@ -82,17 +76,23 @@ def process_pipeline(df: pd.DataFrame) -> pd.DataFrame:
     # We drop rows where the review text is empty or date is invalid
     df = df.dropna(subset=["cleaned_text", "review_date"])
 
+    # Ensure we still meet the count requirement
+    if len(df) < 1200:
+        logger.warning(
+            f"Warning: Final count {len(df)} is below the 1200 target (400/bank)."
+        )
+
     logger.info(f"Preprocessing complete. Final count: {len(df)} records.")
     return df
 
 
 def save_processed_data(df: pd.DataFrame, output_dir: Path) -> None:
     """
-    Saves the clean dataframe to the processed directory.
+    Saves the clean dataframe to the clean directory as per rubric.
     """
     try:
         output_dir.mkdir(parents=True, exist_ok=True)
-        output_path = output_dir / "reviews_cleaned.csv"
+        output_path = output_dir / "reviews_clean.csv"
 
         # Save index=False to keep the file clean
         df.to_csv(output_path, index=False)
@@ -103,7 +103,7 @@ def save_processed_data(df: pd.DataFrame, output_dir: Path) -> None:
 
 
 def main():
-    df = load_latest_data(INPUT_DIR)
+    df = load_data(INPUT_DIR, RAW_FILE_NAME)
 
     if df is not None:
         clean_df = process_pipeline(df)
